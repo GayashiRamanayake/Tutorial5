@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 05</title>
+    <style>
+        .correct{
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect{
+            color: red;
+            font-weight: bold;
+        }
+        h1{
+            text-align: center;
+            color: rgb(97, 3, 97);
+            font-size: 40px;
+        }
+        .question{
+        border: 1px solid;
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+          }
+      .container{
+        background-color: rgb(243, 222, 245);
+        display: flex;
+        flex-direction: column;
+        width: 600px;
+        padding: 10px;
+        text-align: center;
+        margin: auto;
+      }
+      #mark{
+        text-align: center;
+        border: 0.5px solid;
+        font-weight: bold;
+        font-size: 25px;
+        padding: 5px;    
+        border-radius: 10px;    
+      }
+      button{
+        background-color: rgb(209, 173, 196);
+        font-weight: bold;
+        position: relative;
+        left: 20px;
+      }
+    </style>
+</head>
+<body>
+    <h1>A Simple Maths Game</h1>
+  <div class="container">
+    <p><strong class="question">Question 01</strong>
+       <span id="question1"></span>
+       <span id="answer1">
+        <input type="number" id="getanswer1">
+        <button id="submit1">Submit</button>
+       </span>
+       <span id="feedback1"></span></p>
+
+    <p><strong class="question">Question 02</strong>
+        <span id="question2"></span>
+        <span id="answer2">
+         <input type="number" id="getanswer2">
+         <button id="submit2">Submit</button>
+        </span>
+        <span id="feedback2"></span></p>
+
+    <p><strong class="question">Question 03</strong>
+        <span id="question3"></span>
+        <span id="answer3">
+         <input type="number" id="getanswer3">
+         <button id="submit3">Submit</button>
+        </span>
+        <span id="feedback3"></span></p>
+
+    <p><strong class="question">Question 04</strong>
+        <span id="question4"></span>
+        <span id="answer4">
+         <input type="number" id="getanswer4">
+         <button id="submit4">Submit</button>
+        </span>
+        <span id="feedback4"></span></p>
+
+    <p><strong class="question">Question 05</strong>
+        <span id="question5"></span>
+        <span id="answer5">
+            <input type="number" id="getanswer5">
+            <button id="submit5">Submit</button>
+        </span>
+        <span id="feedback5"></span></p>
+
+    <p><strong class="question">Question 06</strong>
+        <span id="question6"></span>
+        <span id="answer6">
+            <input type="number" id="getanswer6">
+            <button id="submit6">Submit</button>
+        </span>
+        <span id="feedback6"></span></p>
+        
+    <p><strong class="question">Question 07</strong>
+        <span id="question7"></span>
+        <span id="answer7">
+            <input type="number" id="getanswer7">
+            <button id="submit7">Submit</button>
+        </span>
+        <span id="feedback7"></span></p>
+
+    <p><strong class="question">Question 08</strong>
+        <span id="question8"></span>
+        <span id="answer8">
+            <input type="number" id="getanswer8">
+            <button id="submit8">Submit</button>
+        </span>
+        <span id="feedback8"></span></p>
+
+    <p><strong class="question">Question 09</strong>
+        <span id="question9"></span>
+        <span id="answer9">
+            <input type="number" id="getanswer9">
+            <button id="submit9">Submit</button>
+        </span>
+        <span id="feedback9"></span></p>
+
+    <p><strong class="question">Question10</strong>
+        <span id="question10"></span>
+        <span id="answer10">
+            <input type="number" id="getanswer10">
+            <button id="submit10">Submit</button>
+        </span>
+        <span id="feedback10"></span></p>
+
+    <p>
+    <p id="mark">
+        Your Score &#58;
+        <span id="score"></span>
+    </p>
+  </div>    
+
+    <script>
+        document.getElementById("question1").innerHTML="8 + 8 =";
+        document.getElementById("question2").innerHTML="2 * 6 =";
+        document.getElementById("question3").innerHTML="24 / 6 =";
+        document.getElementById("question4").innerHTML="7 + 8 =";
+        document.getElementById("question5").innerHTML="8 - 4 =";
+        document.getElementById("question6").innerHTML="13 + 3 =";
+        document.getElementById("question7").innerHTML="26 - 7 =";
+        document.getElementById("question8").innerHTML="10 * 9 =";
+        document.getElementById("question9").innerHTML="12 - 3 =";
+        document.getElementById("question10").innerHTML="75 - 7 =";
+  
+        const answerFor1 = 16;
+        const answerFor2 = 12;
+        const answerFor3 = 4;
+        const answerFor4 = 15;
+        const answerFor5 = 4;
+        const answerFor6 = 16;
+        const answerFor7 = 19;
+        const answerFor8 = 90;
+        const answerFor9 = 9;
+        const answerFor10 = 68;
+        let totalMarks = 0;
+  
+        document.getElementById('submit1').addEventListener('click', function() {
+          const feedback1 = document.getElementById("feedback1");
+          const userAnswer = document.getElementById('getanswer1').value;
+          feedback1.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback1.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor1){
+            feedback1.classList.add("correct");
+            feedback1.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback1.classList.add("incorrect");
+            feedback1.innerHTML="&cross; Correct answer is 16";
+          }
+          document.getElementById('submit1').disabled = true;
+          document.getElementById('getanswer1').readOnly = true;
+          getTotalMark();        
+        });
+  
+  
+        document.getElementById('submit2').addEventListener('click', function() {
+          const feedback2 = document.getElementById("feedback2");
+          const userAnswer = document.getElementById('getanswer2').value;
+          feedback2.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback2.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor2){
+            feedback2.classList.add("correct");
+            feedback2.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback2.classList.add("incorrect");
+            feedback2.innerHTML="&cross; Correct answer is 12";
+          }
+          document.getElementById('submit2').disabled = true;
+          document.getElementById('getanswer2').readOnly = true;
+          getTotalMark();        
+        });
+  
+        document.getElementById('submit3').addEventListener('click', function() {
+          const feedback5 = document.getElementById("feedback3");
+          const userAnswer = document.getElementById('getanswer3').value;
+          feedback5.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback3.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor3){
+            feedback3.classList.add("correct");
+            feedback3.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback3.classList.add("incorrect");
+            feedback3.innerHTML="&cross; Correct answer is 4";
+          }
+          document.getElementById('submit3').disabled = true;
+          document.getElementById('getanswer3').readOnly = true;
+          getTotalMark();        
+        });
+  
+        document.getElementById('submit4').addEventListener('click', function() {
+          const feedback4 = document.getElementById("feedback4");
+          const userAnswer = document.getElementById('getanswer4').value;
+          feedback4.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback4.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor4){
+            feedback4.classList.add("correct");
+            feedback4.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback4.classList.add("incorrect");
+            feedback4.innerHTML="&cross; Correct answer is 15";
+          }
+          document.getElementById('submit4').disabled = true;
+          document.getElementById('getanswer4').readOnly = true;
+          getTotalMark();        
+        });
+  
+        document.getElementById('submit5').addEventListener('click', function() {
+          const feedback5 = document.getElementById("feedback5");
+          const userAnswer = document.getElementById('getanswer5').value;
+          feedback5.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback5.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor5){
+            feedback5.classList.add("correct");
+            feedback5.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback5.classList.add("incorrect");
+            feedback5.innerHTML="&cross; Correct answer is 4";
+          }
+          document.getElementById('submit5').disabled = true;
+          document.getElementById('getanswer5').readOnly = true;
+          getTotalMark();        
+        });
+
+        document.getElementById('submit6').addEventListener('click', function() {
+          const feedback6 = document.getElementById("feedback6");
+          const userAnswer = document.getElementById('getanswer6').value;
+          feedback5.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback6.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor6){
+            feedback6.classList.add("correct");
+            feedback6.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback6.classList.add("incorrect");
+            feedback6.innerHTML="&cross; Correct answer is 16";
+          }
+          document.getElementById('submit6').disabled = true;
+          document.getElementById('getanswer6').readOnly = true;
+          getTotalMark();        
+        });
+
+        document.getElementById('submit7').addEventListener('click', function() {
+          const feedback7 = document.getElementById("feedback7");
+          const userAnswer = document.getElementById('getanswer7').value;
+          feedback7.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback7.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor7){
+            feedback7.classList.add("correct");
+            feedback7.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback7.classList.add("incorrect");
+            feedback7.innerHTML="&cross; Correct answer is 19";
+          }
+          document.getElementById('submit7').disabled = true;
+          document.getElementById('getanswer7').readOnly = true;
+          getTotalMark();        
+        });
+
+        document.getElementById('submit8').addEventListener('click', function() {
+          const feedback8 = document.getElementById("feedback8");
+          const userAnswer = document.getElementById('getanswer8').value;
+          feedback8.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback8.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor8){
+            feedback8.classList.add("correct");
+            feedback8.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback8.classList.add("incorrect");
+            feedback8.innerHTML="&cross; Correct answer is 90";
+          }
+          document.getElementById('submit8').disabled = true;
+          document.getElementById('getanswer8').readOnly = true;
+          getTotalMark();        
+        });
+
+        document.getElementById('submit9').addEventListener('click', function() {
+          const feedback9 = document.getElementById("feedback9");
+          const userAnswer = document.getElementById('getanswer9').value;
+          feedback9.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback9.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor9){
+            feedback9.classList.add("correct");
+            feedback9.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback9.classList.add("incorrect");
+            feedback9.innerHTML="&cross; Correct answer is 9";
+          }
+          document.getElementById('submit9').disabled = true;
+          document.getElementById('getanswer9').readOnly = true;
+          getTotalMark();        
+        });
+
+        document.getElementById('submit10').addEventListener('click', function() {
+          const feedback10 = document.getElementById("feedback10");
+          const userAnswer = document.getElementById('getanswer10').value;
+          feedback10.classList.remove('correct', 'incorrect');
+  
+          if (userAnswer.trim() == ''){
+            feedback10.innerHTML="Please Enter an answer!";
+            return;
+          }
+          else if (userAnswer == answerFor10){
+            feedback10.classList.add("correct");
+            feedback10.innerHTML="&checkmark; Answer is correct";
+            totalMarks++;
+          } else {
+            feedback10.classList.add("incorrect");
+            feedback10.innerHTML="&cross; Correct answer is 68";
+          }
+          document.getElementById('submit10').disabled = true;
+          document.getElementById('getanswer5').readOnly = true;
+          getTotalMark();        
+        });
+  
+        function getTotalMark(){
+          const finalMark = totalMarks * 10;
+          document.getElementById('score').innerHTML = finalMark + "/100";
+        }
+      </script>        
+</body>
+</html>
